@@ -6,9 +6,9 @@
 class java {
   include boxen::config
 
-  $jre_version = '7u40'
-  $jdk_version = '7u40'
-  $jdk_build_number = '43'
+  $jre_version = '7u45'
+  $jdk_version = '7u45'
+  $jdk_build_number = '18'
 
   $jre_dmg_location = "${boxen::config::home}/repo/.tmp/jre.dmg"
   $jdk_dmg_location = "${boxen::config::home}/repo/.tmp/jdk.dmg"
