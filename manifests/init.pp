@@ -10,8 +10,8 @@ class java {
   $jdk_version = '7u45'
   $jdk_build_number = '18'
 
-  $jre_dmg_location = "${boxen::config::home}/repo/.tmp/jre.dmg"
-  $jdk_dmg_location = "${boxen::config::home}/repo/.tmp/jdk.dmg"
+  $jre_dmg_location = "${boxen::config::home}/repo/.tmp/jre${jre_version}.dmg"
+  $jdk_dmg_location = "${boxen::config::home}/repo/.tmp/jdk${jdk_version}.dmg"
 
   $wrapper = "${boxen::config::bindir}/java"
 
@@ -26,14 +26,14 @@ class java {
   }
 
   package {
-    'jre.dmg':
-      ensure   => present,
+    "jre${jre_version}.dmg":
+      ensure   => installed,
       alias    => 'java-jre',
       provider => pkgdmg,
       source   => $jre_dmg_location,
       require  => Exec['download-jre'];
-    'jdk.dmg':
-      ensure   => present,
+    "jdk${jdk_version}.dmg":
+      ensure   => installed,
       alias    => 'java',
       provider => pkgdmg,
       source   => $jdk_dmg_location,
